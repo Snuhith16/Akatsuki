@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BMR and Calorie Planner</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+    }
+    label {
+      display: block;
+      margin: 10px 0 5px;
+    }
+    input, select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 15px;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #218838;
+    }
+    .result {
+      margin-top: 20px;
+      padding: 10px;
+      border: 1px solid #ddd;
+      background-color: #f9f9f9;
+    }
+    .Go{
+        text-decoration: none;
+        color: white;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BMR Calculator and Food Planner</h1>
+    <form id="bmrForm">
+      <label for="weight">Weight (kg):</label>
+      <input type="number" id="weight" required>
+
+      <label for="height">Height (cm):</label>
+      <input type="number" id="height" required>
+
+      <label for="age">Age (years):</label>
+      <input type="number" id="age" required>
+
+      <label for="gender">Gender:</label>
+      <select id="gender" required>
+        <option value="male">Male</option>
+        <option value="female">Female</option>
+      </select>
+
+      <button type="button" onclick="calculateBMR()">Calculate</button>
+      <button><a href="fitmenu.html" class="Go">Next</a></button>
+    </form>
+
+    <div class="result" id="result"></div>
+  </div>
+
+  <script>
+    function calculateBMR() {
+      const weight = parseFloat(document.getElementById('weight').value);
+      const height = parseFloat(document.getElementById('height').value);
+      const age = parseInt(document.getElementById('age').value);
+      const gender = document.getElementById('gender').value;
+
+      let bmr;
+      if (gender === 'male') {
+        bmr = 10 * weight + 6.25 * height - 5 * age + 5;
+      } else {
+        bmr = 10 * weight + 6.25 * height - 5 * age - 161;
+      }
+
+      const calorieMaintenance = bmr * 1.2; // Example: sedentary activity level
+      const calorieLoss = calorieMaintenance - 500;
+      const calorieGain = calorieMaintenance + 500;
+
+      document.getElementById('result').innerHTML = `
+        <p>Your BMR: <strong>${bmr.toFixed(2)}</strong> kcal/day</p>
+        <p>Calories to maintain weight: <strong>${calorieMaintenance.toFixed(2)}</strong> kcal/day</p>
+        <p>Calories for weight loss: <strong>${calorieLoss.toFixed(2)}</strong> kcal/day</p>
+        <p>Calories for weight gain: <strong>${calorieGain.toFixed(2)}</strong> kcal/day</p>
+        <p><strong>Suggested Foods:</strong></p>
+        <ul>
+          <li>Apple (95 kcal)</li>
+          <li>Chicken Breast (165 kcal per 100g)</li>
+          <li>Rice (130 kcal per 100g)</li>
+          <li>Broccoli (55 kcal per 100g)</li>
+        </ul>
+      `;
+    }
+  </script>
+</body>
+</html>

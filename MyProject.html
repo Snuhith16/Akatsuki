@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Project</title>
+    <link rel="stylesheet" href="node_modules/bootstrap-icons/font/bootstrap-icons.css">
+    <style type="text/css">
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            font-family: sans-serif;
+
+        }
+        html{
+            font-size: 62.5%;
+        }
+
+        body{
+            width: 100%;
+            height: 100vh;
+            overflow-x: hidden;
+            background-color: black;
+            color: rgb(159, 5, 5);
+        }
+
+        header{
+            margin: 20px;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem 9%;
+            background-color: transparent;
+            filter: drop-shadow(10px);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .logo{
+            font-size: 3rem;
+            color: rgb(5, 5, 5);
+            font-weight: bolder;
+            cursor: pointer;
+            transition: 0.5s ease;
+        }
+
+        .logo:hover{
+            transform: scale(1.1);
+        }
+
+        nav{
+            font-size: 12px;
+            margin-left: 40px;
+            font-weight: 500;
+            transition: 0.3s ease;
+            border-bottom: 3px solid transparent;
+            justify-content: space-between;
+        }
+        nav~hover,
+        nav~active{
+            color: #b74b4b;
+            border-bottom:3px solid #b74b4b;
+
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+         <div class="logo">My Project</div>
+
+         <nav>
+            <span class="active">Home</span>
+            <span>Services</span>
+            <span>Skills</span>
+            <span>Education</span>
+            <span>Experience</span>
+            <span>Contact</span>
+         </nav>
+    </header>
+    <section class="home">
+        <div class="home-img">
+             <img src="public/giphy.webp">
+        </div>
+        <div class="home-content">
+            <h1>Hi,Its <span>Snuhith</span></h1>
+            <h3 class="typing-text">i'm a <span></span></h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit amet maxime corrupti. Nisi, rerum! Fugiat aliquid impedit voluptate vero esse molestias aut tenetur sequi, atque quos, nam aspernatur. Quasi, voluptates?</p>
+            <div class="social-icons">
+                <span class="bi bi-linkedin"></span>
+                <span class="bi bi-github"></span>
+                <span class="bi bi-twitter-x"></span>
+                <span class="bi bi-instagram"></span>
+
+            </div>
+            <span>Is it amazing</span>
+        </div>
+    </section>
+</body>
+</html>
