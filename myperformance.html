@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fitness Tracker</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+            background-color: #f4f4f9;
+        }
+        header {
+            background: #007BFF;
+            color: #fff;
+            padding: 1rem 0;
+            font-size: 1.5rem;
+        }
+        .container {
+            margin: 2rem auto;
+            max-width: 800px;
+            padding: 1rem;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        canvas {
+            margin: 2rem auto;
+            max-width: 100%;
+        }
+        .leaderboard {
+            margin: 2rem 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f8f9fa;
+        }
+    </style>
+</head>
+<body>
+    <header>Fitness Tracker</header>
+
+    <div class="container">
+        <h2>Calories Burned</h2>
+        <canvas id="caloriesChart"></canvas>
+    </div>
+
+    <div class="container leaderboard">
+        <h2>Leaderboard Streak</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Streak (Days)</th>
+                </tr>
+            </thead>
+            <tbody id="leaderboardBody">
+                <!-- Dynamic leaderboard rows -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        // Data for Calories Burned Pie Chart
+        const calorieData = {
+            labels: ['Running', 'Cycling', 'Swimming', 'Yoga', 'Others'],
+            datasets: [{
+                data: [300, 200, 150, 100, 50], // Example data in calories
+                backgroundColor: ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF'],
+            }]
+        };
+
+        // Render the Pie Chart
+        const ctx = document.getElementById('caloriesChart').getContext('2d');
+        new Chart(ctx, {
+            type: 'pie',
+            data: calorieData,
+        });
+
+        // Leaderboard Data
+        const leaderboardData = [
+            { rank: 1, name: 'Alice', streak: 30 },
+            { rank: 2, name: 'Bob', streak: 25 },
+            { rank: 3, name: 'Charlie', streak: 20 },
+            { rank: 4, name: 'Diana', streak: 15 },
+            { rank: 5, name: 'Eve', streak: 10 }
+        ];
+
+        // Populate Leaderboard Table
+        const leaderboardBody = document.getElementById('leaderboardBody');
+        leaderboardData.forEach(entry => {
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${entry.rank}</td>
+                <td>${entry.name}</td>
+                <td>${entry.streak}</td>
+            `;
+            leaderboardBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
+apps-fileview.texmex_20241212.01_p1
+graphs.html
